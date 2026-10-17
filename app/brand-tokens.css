@@ -1,0 +1,51 @@
+/* Generated from brand-tokens.json. Run node tools/build-tokens.mjs after editing. */
+:root {
+  color-scheme: light;
+  --pine-950: #102F27;
+  --pine-900: #184C3B;
+  --pine-800: #245B46;
+  --forest: #367052;
+  --moss: #89AA68;
+  --leaf: #AECB8A;
+  --sky: #A8CBCD;
+  --sky-pale: #E4F0EA;
+  --mist: #F3F5EE;
+  --cream: #F7F1E4;
+  --sun: #F5C75B;
+  --sun-pale: #FFEDB0;
+  --ink: #23362F;
+  --ink-soft: #506259;
+  --line: #CED9CE;
+  --white: #FFFFFF;
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --heading: var(--pine-950);
+  --card: var(--white);
+  --card-foreground: var(--ink);
+  --popover: var(--white);
+  --popover-foreground: var(--ink);
+  --primary: var(--pine-900);
+  --primary-foreground: var(--white);
+  --primary-hover: var(--pine-800);
+  --secondary: var(--mist);
+  --secondary-foreground: var(--pine-950);
+  --muted: var(--mist);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--sky-pale);
+  --accent-foreground: var(--pine-950);
+  --border: var(--line);
+  --input: var(--forest);
+  --ring: var(--pine-950);
+  --surface: var(--white);
+  --surface-raised: var(--mist);
+  --line-strong: #B9C8BF;
+  --line-control: var(--forest);
+  --warning: #8A5A00;
+  --error: #B3261E;
+  --info: #285F73;
+  --destructive: #B3261E;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-dm-sans), Arial, sans-serif;
+  /* Approved two-family system: operational data and identifiers use DM Sans. */
+  --font-data: var(--font-dm-sans), Arial, sans-serif;
+}

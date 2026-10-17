@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Vayucred brand mark</title>
+  <desc id="desc">Three connected fields form an open, evidence-backed system.</desc>
+  <path fill="#102F27" d="M256 42c9 0 17 2 26 7l156 91-139 81c-23 13-37 31-43 54-6-23-20-41-43-54L74 140l156-91c9-5 17-7 26-7Z"/>
+  <path fill="#89AA68" d="M56 164c-10 10-14 23-14 39v153c0 16 8 29 22 38l157 92c14 8 26 9 38 3l17-10c-22-14-32-31-32-56V318c0-24-12-43-34-56L87 191c-17-10-27-19-31-27Z"/>
+  <path fill="#A8CBCD" d="M456 164c10 10 14 23 14 39v153c0 16-8 29-22 38L268 499V318c0-24 12-43 34-56l123-71c17-10 27-19 31-27Z"/>
+</svg>

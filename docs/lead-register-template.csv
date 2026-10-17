@@ -1,0 +1,2 @@
+lead_id,received_at_ist,contact_name,organisation,email,audience,sector,request_summary,source,utm_campaign,owner,status,next_action,next_action_date,consent_or_context_notes,last_updated_at_ist
+EXAMPLE-DELETE,2026-10-08 10:00,Example Contact,Example Organisation,example@example.com,Project owner,Solar,Initial eligibility conversation,LinkedIn,launch,Founder,New,Acknowledge and request high-level context,2026-10-08,Do not place confidential attachments or sensitive records in this sheet,2026-10-08 10:00

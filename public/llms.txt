@@ -1,0 +1,30 @@
+# Vayucred
+
+> Vayucred is a brand of RASYLONN TECHNOLOGIES PRIVATE LIMITED, based in Hyderabad, India. It supports Solar, Biogas/CBG and Biochar projects from early assessment and aggregation through monitoring and market connections.
+
+## Confirmed scope
+
+- Project focus: Solar, Biogas/CBG and Biochar.
+- Current support: assessment, aggregation, monitoring, and buyer introductions or credit sales according to the project and engagement.
+- Primary audiences: project owners and carbon buyers.
+- Additional audiences: investors and partners.
+- Public contact: hello@vayucred.com.
+- Founder: Rishwan Reddy. Co-founder: Sai Puneeth Bandi.
+- Official LinkedIn: https://www.linkedin.com/company/vayucred/
+- SCADA and digital MRV capabilities are in development; the website does not represent them as deployed products.
+
+## Primary pages
+
+- [Vayucred](https://vayucred.com/): company overview, project focus and audience pathways.
+- [For project owners](https://vayucred.com/asset-owners): assessment, aggregation, monitoring and market-support pathway.
+- [For carbon buyers](https://vayucred.com/buyers): evidence questions and procurement context.
+- [Technology in development](https://vayucred.com/evidence-infrastructure): SCADA and digital MRV direction.
+- [Methodology and integrity](https://vayucred.com/methodology): evidence, calculation and independent-role boundaries.
+- [About Vayucred](https://vayucred.com/about): purpose, confirmed scope and company facts.
+- [Contact Vayucred](https://vayucred.com/contact): enquiry guidance for owners, buyers, investors and partners.
+
+## Important boundaries
+
+- Eligibility and outcomes remain subject to applicable requirements and independent processes.
+- Validation, verification, registration, certification and issuance decisions remain with the relevant independent bodies and registries.
+- The website does not claim guaranteed eligibility, issuance, earnings or buyer outcomes.
