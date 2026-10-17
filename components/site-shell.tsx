@@ -66,7 +66,8 @@ function DarkModeToggle() {
     const stored = localStorage.getItem("vayucred-theme");
     if (stored === "dark") {
       document.documentElement.classList.add("dark");
-      setDark(true);
+      const frame = window.requestAnimationFrame(() => setDark(true));
+      return () => window.cancelAnimationFrame(frame);
     }
   }, []);
   const toggle = () => {

@@ -24,7 +24,9 @@ npm run build
 npm run build:hostinger
 ```
 
-The project retains its Vinext/Vite preview scaffold. `npm run build:hostinger` creates the static `out/` directory for Hostinger Business Web Hosting and copies the Apache redirect/security configuration into it. Staging builds must omit `NEXT_PUBLIC_ALLOW_INDEXING=true`; the production build must set it explicitly after launch approval. Copy `.env.production.example` to `.env.production.local` only for an approved production build and add search-engine verification tokens when available.
+The project retains its Vinext/Vite preview scaffold. `npm run build:hostinger` creates the static `out/` directory for Hostinger Business Web Hosting and copies the Apache redirect/security configuration into it. The build defaults to `https://vayucred.com` with indexing enabled so Hostinger can build without an `.env` file. Staging must explicitly set `NEXT_PUBLIC_ALLOW_INDEXING=false` and its own `NEXT_PUBLIC_SITE_URL`. Add search-engine verification tokens through Hostinger environment variables when available.
+
+Hostinger should connect directly to the `master` branch with build command `npm run build`, output directory `out`, Node.js 22 and no entry file. The GitHub Actions workflow verifies the same production export on every push but does not publish or require FTP secrets.
 
 ## GitHub Pages staging
 

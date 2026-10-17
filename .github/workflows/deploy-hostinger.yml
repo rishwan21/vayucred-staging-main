@@ -1,12 +1,15 @@
-name: Deploy to Hostinger
+name: Verify Hostinger build
 
 on:
   push:
     branches: [master]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,30 +27,13 @@ jobs:
 
       - name: Build for Hostinger (static export)
         env:
-          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+          NEXT_PUBLIC_SITE_URL: https://vayucred.com
           NEXT_PUBLIC_ALLOW_INDEXING: "true"
         run: npm run build:hostinger
 
-      - name: Add .htaccess for SPA routing
+      - name: Verify Hostinger output
         run: |
-          cat > out/.htaccess << 'EOF'
-          Options -MultiViews
-          RewriteEngine On
-          RewriteCond %{REQUEST_FILENAME} !-f
-          RewriteCond %{REQUEST_FILENAME} !-d
-          RewriteRule ^ index.html [QSA,L]
-          EOF
-
-      - name: Deploy via FTP to Hostinger
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./out/
-          server-dir: /public_html/
-          dangerous-clean-slate: false
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
+          test -s out/index.html
+          test -s out/.htaccess
+          test -s out/robots.txt
+          test -s out/sitemap.xml
