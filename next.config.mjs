@@ -2,7 +2,10 @@
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
-  output: "export",
+  output:
+    process.env.VAYUCRED_NEXT_OUTPUT === "standalone"
+      ? "standalone"
+      : "export",
   trailingSlash: true,
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
   assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || undefined,
