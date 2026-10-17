@@ -15,7 +15,8 @@ for (const directory of ["../.next", "../out"]) {
   });
 }
 
-const result = spawnSync(process.execPath, [nextCli, "build"], {
+// Hostinger's legacy glibc loads SWC through WASM, which Turbopack cannot use.
+const result = spawnSync(process.execPath, [nextCli, "build", "--webpack"], {
   env: {
     ...process.env,
     NEXT_PUBLIC_SITE_URL:
