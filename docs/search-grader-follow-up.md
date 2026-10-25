@@ -4,6 +4,8 @@ The report flags homepage content, SSL and low organic discovery. Source changes
 
 `npm run qa:export` checks the built HTML for all nine routes, sitemap/canonical parity, indexing controls, FAQ parity, content and statistics. Run it after `npm run build`. For a staging build, pass the same `NEXT_PUBLIC_SITE_URL` and `NEXT_PUBLIC_ALLOW_INDEXING=false` to the build and QA commands.
 
+The upstream security updates are preserved. React and React DOM are aligned to the server-rendering package's required version, and the dependency lockfile is refreshed so clean installs use those updates.
+
 ## HTTPS
 
 Live checks on 25 October returned HTTPS 200 for `https://vayucred.com/`, with successful certificate validation. `https://www.vayucred.com/` and `http://vayucred.com/` returned 301 to the canonical HTTPS address. The screenshot's certificate warning was not reproduced. These checks do not constitute a full TLS configuration audit.

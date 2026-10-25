@@ -21,6 +21,7 @@ npx tsc --noEmit
 npm run qa:content
 npm run qa:search
 npm run build
+npm run qa:export
 npm run build:hostinger
 ```
 
@@ -50,6 +51,8 @@ The workflow in `.github/workflows/deploy-pages.yml` builds and deploys the `mai
 - docs/enquiry-response-templates.md: approved starting points for acknowledgement and qualification replies.
 
 Canonical palette: ../tokens/brand-tokens.json. The website carries its own generated CSS and font files for deployment.
+
+See [the search grader follow-up](docs/search-grader-follow-up.md) for the content and HTTPS fixes, rendered-page checks, and remaining search-console actions.
 
 The existing package lock is preserved. Unused starter UI widgets have been removed from the active source; installed dependency versions have not been changed during this visual/folder pass.
 

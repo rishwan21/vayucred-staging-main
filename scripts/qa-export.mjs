@@ -36,8 +36,9 @@ for (const question of faq.mainEntity) {
   assert(text.includes(question.name), `FAQ question missing from rendered HTML: ${question.name}`);
   assert(text.includes(question.acceptedAnswer.text), `FAQ answer missing from rendered HTML: ${question.name}`);
 }
+const accessibleStats = [...homepage.matchAll(/<span class="sr-only">([\s\S]*?)<\/span>/g)].map((match) => visibleText(match[1]).replace(/\s/g, ""));
 for (const number of ["3+", "100%", "4", "2"]) {
-  assert(homepage.includes(`<span class="sr-only">${number}</span>`), `Missing accessible statistic: ${number}`);
+  assert(accessibleStats.includes(number), `Missing accessible statistic: ${number}`);
 }
 const robots = await read("robots.txt");
 assert(robots.includes(indexable ? "Allow: /" : "Disallow: /"), "Wrong crawler permission in robots.txt");
