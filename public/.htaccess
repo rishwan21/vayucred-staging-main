@@ -1,10 +1,18 @@
 RewriteEngine On
 
-# Keep the public launch on one canonical host.
+# Canonicalize the production host in one hop; leave preview hosts alone.
 RewriteCond %{HTTP_HOST} ^www\.vayucred\.com$ [NC]
 RewriteRule ^ https://vayucred.com%{REQUEST_URI} [R=301,L,NE]
 
+# Honor HTTPS forwarded by the hosting proxy to avoid redirect loops.
+RewriteCond %{HTTP_HOST} ^vayucred\.com$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !^https$ [NC]
+RewriteRule ^ https://vayucred.com%{REQUEST_URI} [R=301,L,NE]
+
 <IfModule mod_headers.c>
+  # Apply HSTS to this host only; subdomain TLS is managed separately.
+  Header always set Strict-Transport-Security "max-age=31536000"
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"

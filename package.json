@@ -15,6 +15,7 @@
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern out",
     "qa:content": "node scripts/qa-content.mjs",
     "qa:search": "node scripts/qa-search.mjs",
+    "qa:export": "node scripts/qa-export.mjs",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {

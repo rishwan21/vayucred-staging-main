@@ -16,6 +16,10 @@ const socialImage = {
   alt: "Vayucred — From real projects to carbon markets",
 };
 
+export function pageUrl(path: string) {
+  return `${siteUrl}${path === "/" ? "/" : `${path.replace(/\/$/, "")}/`}`;
+}
+
 export function createPageMetadata({
   title,
   description,
@@ -30,11 +34,11 @@ export function createPageMetadata({
   return {
     title,
     description,
-    alternates: { canonical: path },
+    alternates: { canonical: pageUrl(path) },
     openGraph: {
       type: "website",
       locale: "en_IN",
-      url: path,
+      url: pageUrl(path),
       siteName,
       title,
       description,

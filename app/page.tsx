@@ -117,19 +117,31 @@ const faqs = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 function useCountUp(target: number, duration = 1800, start = false) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(target);
   useEffect(() => {
-    if (!start) return;
+    if (!start || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let frame: number;
     let startTime: number | null = null;
     const step = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
+      if (progress < 1) frame = requestAnimationFrame(step);
     };
-    requestAnimationFrame(step);
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
   }, [target, duration, start]);
   return count;
 }
@@ -153,7 +165,7 @@ function StatCard({ number, suffix, label, sub, icon: Icon }: typeof stats[0]) {
   return (
     <div ref={ref} className="stat-card">
       <div className="stat-icon"><Icon aria-hidden="true" /></div>
-      <div className="stat-number">{count}{suffix}</div>
+      <div className="stat-number"><span aria-hidden="true">{count}{suffix}</span><span className="sr-only">{number}{suffix}</span></div>
       <div className="stat-label">{label}</div>
       <div className="stat-sub">{sub}</div>
     </div>
@@ -243,6 +255,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <SiteHeader />
 
@@ -412,6 +428,76 @@ export default function Home() {
         <div className="shell contact-inner">
           <div><p className="kicker">Begin a conversation</p><h2>Bring the project.<br />Bring the questions.</h2></div>
           <div><p>Tell us what you are working on, the intended pathway and the records already available. Keep the first message high level and do not attach sensitive project files.</p><a className="contact-inline" href="mailto:hello@vayucred.com">hello@vayucred.com <ArrowUpRight aria-hidden="true" /></a></div>
+        </div>
+      </section>
+
+      {/* Project pathway guidance and detailed service links. */}
+      <section className="seo-editorial" aria-label="About Vayucred carbon project development">
+        <div className="shell">
+          <h2>Carbon Project Development in India — Solar, Biogas and Biochar</h2>
+          <p>
+            Vayucred is a carbon project development company based in Hyderabad, India. We work with Solar,
+            Biogas/CBG (Compressed Biogas) and Biochar project owners across India to help them understand,
+            organise and navigate the carbon market pathway. Our work covers four service areas: project
+            assessment, project aggregation, monitoring and reporting, and buyer introductions or carbon
+            credit sales support.
+          </p>
+          <p>
+            Carbon-market participation depends on the project, its baseline, the applicable methodology
+            and the records available for review. A solar plant, biogas facility or biochar operation
+            does not qualify for credits simply because it belongs to one of these project families.
+            Vayucred begins with the asset, activity records, monitoring data and people responsible.
+            We help owners identify evidence gaps and prepare for applicable independent processes.
+          </p>
+          <p><Link href="/asset-owners">Explore carbon project support</Link> or <Link href="/buyers">review guidance for carbon buyers</Link>.</p>
+          <h3>Solar Carbon Credits</h3>
+          <p>
+            Solar energy projects convert sunlight into measurable electricity generation. In the carbon
+            market, eligibility depends on the applicable methodology, baseline and additionality
+            requirements. Vayucred assesses solar projects for pathway eligibility, helps organise
+            generation records and monitoring data, and supports the aggregation of smaller projects where
+            individual project sizes make standalone registration difficult.
+          </p>
+          <h3>Biogas and Compressed Biogas (CBG) Carbon Credits</h3>
+          <p>
+            Biogas and CBG projects recover methane from organic waste streams — agricultural residue,
+            municipal solid waste, food waste and animal manure — converting what would otherwise be a
+            greenhouse gas emission into a usable energy source. The carbon market pathway for biogas
+            involves detailed feedstock, process and end-use records. Vayucred works with biogas project
+            teams on the operational information requirements that underpin a credible monitoring and
+            reporting workflow.
+          </p>
+          <h3>Biochar Carbon Removal Credits</h3>
+          <p>
+            Biochar projects transform suitable biomass into a stable carbon-rich material that, used in an eligible end application,
+            may support a carbon removal pathway. Storage durability and credited quantities depend on
+            the process, material properties, methodology and independent review. Vayucred assesses biochar projects
+            with attention to feedstock sourcing, pyrolysis process parameters and end-use evidence, all
+            of which affect the credibility of the carbon removal claim.
+          </p>
+          <h3>Carbon Project Monitoring, Reporting and Verification (MRV)</h3>
+          <p>
+            Credible carbon credits require credible measurement, reporting and verification (MRV).
+            Vayucred is developing SCADA-based digital monitoring capabilities and digital MRV workflows
+            to support project teams in collecting and organising the operational data that independent
+            verifiers need. Our technology work supports the field evidence — it does not replace the
+            independent processes that give carbon credits their integrity.
+          </p>
+          <p><Link href="/evidence-infrastructure">Read about our monitoring technology in development</Link> and <Link href="/methodology">the independent roles in the carbon pathway</Link>.</p>
+          <h3>Who Works with Vayucred?</h3>
+          <p>
+            Vayucred works with two primary audiences: project owners and carbon buyers. Project owners —
+            including solar plant operators, biogas facility managers and biochar producers — come to
+            Vayucred to understand whether their project is eligible for a carbon market pathway and what
+            the pathway requires. Carbon buyers — corporate sustainability teams, environmental commodity
+            traders and voluntary offset purchasers — come to Vayucred to source credits from
+            transparently documented Indian projects and to examine the evidence behind each opportunity.
+          </p>
+          <p>
+            Vayucred is registered as RASYLONN TECHNOLOGIES PRIVATE LIMITED and is based in Hyderabad,
+            Telangana. To start a conversation about a project or a buying enquiry, contact us at{" "}
+            <a href="mailto:hello@vayucred.com">hello@vayucred.com</a>.
+          </p>
         </div>
       </section>
 

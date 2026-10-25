@@ -1980,3 +1980,32 @@ html.dark .hero-ribbon span { border-color: #2a4232; color: #d4ead0; }
   .technology-orbit span { animation: none; }
 }
 
+/* Project pathway guidance. */
+.seo-editorial {
+  padding-block: 4rem;
+  background: var(--surface-subtle, color-mix(in srgb, var(--background) 96%, var(--foreground) 4%));
+  border-top: 1px solid var(--border);
+}
+.seo-editorial h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-block: 0 1.25rem;
+  color: var(--foreground);
+}
+.seo-editorial h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 600;
+  margin-block: 2rem 0.75rem;
+  color: var(--foreground);
+}
+.seo-editorial p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+  max-width: 72ch;
+  margin-block: 0 1rem;
+}
+
