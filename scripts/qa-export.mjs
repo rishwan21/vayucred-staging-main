@@ -28,7 +28,9 @@ for (const route of routes) {
 
 const homepage = await read("index.html");
 const text = visibleText(homepage);
-assert(text.split(/\s+/).length >= 1200, "Homepage project guidance is missing from the initial HTML");
+for (const heading of ["Solar", "Biogas / CBG", "Biochar", "Assess", "Aggregate", "Monitor", "Connect"]) {
+  assert(text.includes(heading), `Homepage project/service content is missing from the initial HTML: ${heading}`);
+}
 const schemas = [...homepage.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].map((match) => JSON.parse(match[1]));
 const faq = schemas.find((schema) => schema["@type"] === "FAQPage");
 assert(faq && faq.mainEntity.length === 6, "Expected all six visible FAQs in structured data");

@@ -6,6 +6,8 @@ The report flags homepage content, SSL and low organic discovery. Source changes
 
 The upstream security updates are preserved. React and React DOM are aligned to the server-rendering package's required version, and the dependency lockfile is refreshed so clean installs use those updates.
 
+On 27 October, the long project-guidance section below the contact section was removed from the homepage. The existing project cards, service journey, FAQs and detailed service pages remain. Export QA now checks that the project families and services appear in the initial HTML rather than enforcing a homepage word count.
+
 ## HTTPS
 
 Live checks on 25 October returned HTTPS 200 for `https://vayucred.com/`, with successful certificate validation. `https://www.vayucred.com/` and `http://vayucred.com/` returned 301 to the canonical HTTPS address. The screenshot's certificate warning was not reproduced. These checks do not constitute a full TLS configuration audit.
