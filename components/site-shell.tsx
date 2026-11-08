@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 const navItems = [
   { href: "/methodology", label: "Carbon Credits" },
   { href: "/evidence-infrastructure", label: "Technology" },
-  { href: "/asset-owners", label: "Project Developers" },
+  { href: "/asset-owners", label: "Asset Owners" },
   { href: "/buyers", label: "Buyers" },
   { href: "/about", label: "About" },
 ];
@@ -150,7 +150,7 @@ export function SiteFooter() {
           </FooterColumn>
 
           <FooterColumn title="Work With Us">
-            <Link href="/asset-owners">Project Creators</Link>
+            <Link href="/asset-owners">Asset Owners</Link>
             <Link href="/buyers">Buyers</Link>
           </FooterColumn>
         </div>

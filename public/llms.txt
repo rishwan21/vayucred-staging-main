@@ -6,7 +6,7 @@
 
 - Project focus: Solar, Biogas/CBG and Biochar.
 - Current support: assessment, aggregation, monitoring, and buyer introductions or credit sales according to the project and engagement.
-- Primary audiences: project owners and carbon buyers.
+- Primary audiences: asset owners and carbon buyers.
 - Additional audiences: investors and partners.
 - Public contact: hello@vayucred.com.
 - Founder: Rishwan Reddy. Co-founder: Sai Puneeth Bandi.
@@ -16,7 +16,7 @@
 ## Primary pages
 
 - [Vayucred](https://vayucred.com/): company overview, project focus and audience pathways.
-- [For project owners](https://vayucred.com/asset-owners): assessment, aggregation, monitoring and market-support pathway.
+- [For Asset Owners](https://vayucred.com/asset-owners): assessment, aggregation, monitoring and market-support pathway.
 - [For carbon buyers](https://vayucred.com/buyers): evidence questions and procurement context.
 - [Technology in development](https://vayucred.com/evidence-infrastructure): SCADA and digital MRV direction.
 - [Methodology and integrity](https://vayucred.com/methodology): evidence, calculation and independent-role boundaries.

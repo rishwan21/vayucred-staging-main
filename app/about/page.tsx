@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { createPageMetadata } from "@/lib/site";
 
 export const metadata = createPageMetadata({
-  title: "About Vayucred — Project-led Carbon Market Support",
+  title: "About Vayucred | Carbon Market Project Support",
   description: "Why Vayucred exists, what it handles, and how it connects Solar, Biogas/CBG and Biochar projects with carbon-market pathways.",
   path: "/about",
 });
@@ -41,7 +41,7 @@ export default function AboutPage() {
     <InnerPage
       eyebrow="About Vayucred"
       title="A clearer path from climate activity to carbon markets."
-      intro="Vayucred works with Solar, Biogas/CBG and Biochar projects, helping project owners organise the pathway and helping buyers understand the evidence behind the opportunity."
+      intro="Vayucred works with Solar, Biogas/CBG and Biochar projects, helping asset owners organise the pathway and helping buyers understand the evidence behind the opportunity."
       variant="about"
     >
       <section className="section shell about-origin" aria-labelledby="about-origin-title">
@@ -49,7 +49,7 @@ export default function AboutPage() {
         <div>
           <h2 id="about-origin-title">Environmental value can be real—and still difficult to bring to market.</h2>
           <p className="about-origin-question">If a project is creating a measurable environmental benefit, why is participation in the carbon market still so difficult?</p>
-          <p>Because the activity is only the beginning. A workable pathway also needs eligibility assessment, an appropriate methodology, usable records, monitoring, applicable independent processes and a buyer conversation. Vayucred exists to help project owners work through that gap without losing sight of the real project underneath.</p>
+          <p>Because the activity is only the beginning. A workable pathway also needs eligibility assessment, an appropriate methodology, usable records, monitoring, applicable independent processes and a buyer conversation. Vayucred exists to help asset owners work through that gap without losing sight of the real project underneath.</p>
         </div>
       </section>
 
@@ -123,14 +123,13 @@ export default function AboutPage() {
             <div><p>Co-founder</p><h3>Sai Puneeth Bandi</h3><a href="https://www.linkedin.com/in/saipuneethbandi/" rel="noreferrer" target="_blank">View LinkedIn profile <ArrowUpRight aria-hidden="true" /></a></div>
           </article>
         </div>
-        <p className="team-photo-note">Founder portraits will replace the monograms when stable original image files are added to the website asset library.</p>
       </section>
 
       <section className="company-facts" aria-label="Confirmed company facts">
         <div className="shell company-facts-layout">
           <div className="company-location"><MapPin aria-hidden="true" /><p><span>Based in</span>Hyderabad, India</p></div>
           <div><p><span>Company</span>Vayucred is a brand of RASYLONN TECHNOLOGIES PRIVATE LIMITED.</p></div>
-          <div><p><span>Primary audiences</span>Project owners and carbon buyers.</p></div>
+          <div><p><span>Primary audiences</span>Asset owners and carbon buyers.</p></div>
         </div>
       </section>
 

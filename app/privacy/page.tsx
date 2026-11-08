@@ -33,7 +33,7 @@ export default function PrivacyPage() {
         <BoundaryNote>
           Please do not email confidential project records, credentials, sensitive personal information or commercially sensitive files until Vayucred provides an approved secure intake method.
         </BoundaryNote>
-        <p className="legal-review-note">This operational notice is a startup compliance baseline and should be reviewed periodically by qualified Indian counsel as applicable requirements and the Vayucred service model develop.</p>
+        <p className="legal-review-note">This notice should be reviewed periodically by qualified Indian counsel as applicable requirements or the Vayucred service model change.</p>
       </section>
     </InnerPage>
   );

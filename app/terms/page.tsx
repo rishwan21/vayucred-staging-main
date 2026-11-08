@@ -37,7 +37,7 @@ export default function TermsPage() {
         <BoundaryNote>
           Carbon-market requirements vary by project, methodology, programme and jurisdiction. Website information cannot replace project-specific assessment or independent review.
         </BoundaryNote>
-        <p className="legal-review-note">These terms are a practical early-stage website baseline and should be reviewed by qualified Indian counsel before the public production launch and after material service changes.</p>
+        <p className="legal-review-note">These terms should be reviewed by qualified Indian counsel periodically and after material changes to the website, services or applicable requirements.</p>
       </section>
     </InnerPage>
   );

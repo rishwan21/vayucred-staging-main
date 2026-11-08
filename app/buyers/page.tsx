@@ -6,7 +6,7 @@ import { BoundaryNote, InnerPage } from "@/components/site-shell";
 import { createPageMetadata } from "@/lib/site";
 
 export const metadata = createPageMetadata({
-  title: "For Carbon Buyers — Vayucred",
+  title: "Carbon Credit Due Diligence for Buyers | Vayucred",
   description: "Review the origin, methodology, boundaries, assurance and limitations behind a carbon credit opportunity.",
   path: "/buyers",
 });

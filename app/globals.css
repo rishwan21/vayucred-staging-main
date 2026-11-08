@@ -671,7 +671,7 @@ body { font-size: 17px; }
 @media(max-width:960px) { .hero-inner { grid-template-columns: 1fr; } .footer-inner { grid-template-columns: 1fr; } .footer-inner p { text-align: left; } .footer-inner nav { justify-content: flex-start; } }
 @media(max-width:640px) { .hero h1 { font-size: clamp(2.8rem, 11vw, 4rem); } }
 
-/* Homepage 3.0 — an editorial landscape, not a software dashboard. */
+/* Homepage hero. */
 .home-hero {
   position: relative;
   overflow: hidden;
@@ -692,11 +692,10 @@ body { font-size: 17px; }
 .home-hero-layout {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, .94fr) minmax(440px, 1.06fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  gap: clamp(40px, 5vw, 76px);
-  min-height: 720px;
-  padding-block: clamp(76px, 9vw, 118px) 64px;
+  min-height: 610px;
+  padding-block: clamp(76px, 9vw, 104px) 64px;
 }
 .home-hero-copy { position: relative; z-index: 2; }
 .home-hero h1 {
@@ -726,57 +725,6 @@ body { font-size: 17px; }
   font-size: .82rem;
   line-height: 1.55;
 }
-.landscape {
-  position: relative;
-  z-index: 1;
-  margin: 0;
-  border: 1px solid rgb(54 112 82 / 24%);
-  border-radius: 12rem 12rem 1.7rem 1.7rem;
-  background: linear-gradient(180deg, #e4f0ea 0 59%, #edf0df 59% 100%);
-  box-shadow: 0 34px 80px rgb(16 47 39 / 10%);
-}
-.landscape::before {
-  position: absolute;
-  inset: 14px;
-  border: 1px solid rgb(255 255 255 / 48%);
-  border-radius: inherit;
-  content: "";
-  pointer-events: none;
-}
-.landscape-art { display: block; width: 100%; height: auto; overflow: visible; }
-.air-line { fill: none; stroke: var(--white); stroke-linecap: round; stroke-width: 2; }
-.air-line-two { opacity: .58; }
-.landscape-sun { fill: var(--sun); opacity: .9; }
-.hill-back { fill: var(--leaf); }
-.hill-front { fill: var(--moss); }
-.field-line,
-.grass { fill: none; stroke: var(--pine-900); stroke-linecap: round; stroke-width: 2; }
-.panel { fill: var(--pine-900); stroke: var(--pine-950); stroke-linejoin: round; stroke-width: 2; }
-.panel-grid { fill: none; opacity: .5; stroke: var(--sky); stroke-width: 1.5; }
-.panel-leg { fill: none; stroke: var(--pine-950); stroke-width: 3; }
-.digester-body { fill: var(--sun-pale); stroke: var(--pine-900); stroke-width: 3; }
-.digester-line { fill: none; stroke: var(--pine-900); stroke-linecap: round; stroke-width: 3; }
-.digester-dot { fill: var(--sun); stroke: var(--pine-900); stroke-width: 2; }
-.kiln { fill: var(--pine-900); stroke: var(--pine-950); stroke-width: 2; }
-.kiln-top { fill: var(--ink); stroke: var(--pine-950); stroke-linejoin: round; stroke-width: 2; }
-.smoke { fill: none; opacity: .52; stroke: var(--pine-900); stroke-linecap: round; stroke-width: 6; }
-.plant { fill: none; stroke: var(--pine-950); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3; }
-.landscape-markers { fill: var(--cream); stroke: var(--pine-900); stroke-width: 2; }
-.landscape figcaption {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  padding: 17px 20px 19px;
-  border-top: 1px solid rgb(54 112 82 / 18%);
-  color: var(--ink-soft);
-  font-size: .76rem;
-  font-weight: 600;
-}
-.landscape figcaption span { display: inline-flex; align-items: center; gap: 7px; }
-.legend-dot { width: 7px; height: 7px; border-radius: 50%; }
-.solar-dot { background: var(--sun); }
-.biogas-dot { background: var(--moss); }
-.biochar-dot { background: var(--pine-900); }
 .hero-ribbon {
   position: relative;
   display: grid;
@@ -940,9 +888,8 @@ body { font-size: 17px; }
 }
 
 @media (max-width: 840px) {
-  .home-hero-layout { grid-template-columns: 1fr; padding-top: 76px; }
+  .home-hero-layout { padding-top: 76px; }
   .home-hero-copy { max-width: 720px; }
-  .landscape { width: min(100%, 680px); margin-inline: auto; }
   .editorial-intro,
   .service-section,
   .integrity-section { grid-template-columns: 1fr; }
@@ -964,8 +911,6 @@ body { font-size: 17px; }
   .home-hero h1 { font-size: clamp(3.25rem, 15vw, 4.6rem); }
   .home-hero .hero-actions { display: grid; }
   .home-hero .hero-actions a { width: 100%; }
-  .landscape { border-radius: 7rem 7rem 1.2rem 1.2rem; }
-  .landscape figcaption { flex-wrap: wrap; gap: 9px 17px; }
   .hero-ribbon { grid-template-columns: 1fr; padding-block: 12px; }
   .hero-ribbon span,
   .hero-ribbon .hero-ribbon-label { padding: 8px 0; border-right: 0; }
@@ -988,7 +933,7 @@ body { font-size: 17px; }
   .partner-layout [data-slot="button"] { width: 100%; }
 }
 
-/* Core route system 3.0 — the homepage landscape carried through the journeys. */
+/* Interior route system. */
 .inner-hero {
   min-height: 580px;
   display: grid;
@@ -1452,7 +1397,6 @@ body { font-size: 17px; }
 .about-team-grid h3 { margin: 0 0 22px; color: var(--pine-950); font-family: var(--font-display); font-size: clamp(1.85rem, 3vw, 2.65rem); font-weight: 500; line-height: 1.05; }
 .about-team-grid a { display: inline-flex; min-height: 44px; align-items: center; gap: 8px; border-bottom: 1px solid var(--line-strong); color: var(--pine-950); font-weight: 700; }
 .about-team-grid a svg { width: 16px; }
-.team-photo-note { margin: 18px 0 0; color: var(--ink-soft); font-size: .82rem; }
 .legal-copy section > div > p + p { margin-top: 16px; }
 .legal-copy a { color: var(--pine-900); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .legal-review-note { margin: 22px 0 0; color: var(--ink-soft); font-size: .82rem; }
@@ -1635,14 +1579,6 @@ html.dark .home-hero {
     radial-gradient(circle at 89% 16%, rgb(122 191 137 / 15%), transparent 22rem),
     linear-gradient(180deg, #0f1c17 0%, #111f18 72%, #131f18 100%);
 }
-html.dark .landscape {
-  background: linear-gradient(180deg, #1a3a2a 0 59%, #1e3020 59% 100%);
-  border-color: rgb(122 191 137 / 24%);
-}
-html.dark .hill-back { fill: #2a5040; }
-html.dark .hill-front { fill: #1e3a2a; }
-html.dark .landscape-sun { fill: #c9a130; }
-html.dark .air-line { stroke: rgb(255 255 255 / 20%); }
 html.dark .focus-section { background: #111f18; }
 html.dark .audience-section { background: #1a2e33; }
 html.dark .audience-card:first-child { border-top-color: #4a7a5a; }
@@ -1661,9 +1597,6 @@ html.dark .wordmark { color: #d4ead0; }
 html.dark .mobile-menu nav { background: #1a2e22; border-color: #2a4232; }
 html.dark .mobile-menu nav a { border-color: #2a4232; color: #cce0cc; }
 html.dark .inner-hero { background: #111f18; }
-html.dark .stats-section { background: #111f18; }
-html.dark .stat-card { background: #1a2e22; border-color: #2a4232; }
-html.dark .stat-icon { background: #1e3428; }
 html.dark .faq-section { background: #0f1c17; }
 html.dark .faq-item { border-color: #2a4232; }
 html.dark .faq-question { color: #d4ead0; }
@@ -1699,72 +1632,6 @@ html.dark .hero-ribbon span { border-color: #2a4232; color: #d4ead0; }
 }
 @media (max-width: 960px) {
   .nav-wrap { grid-template-columns: 1fr auto auto; }
-}
-
-/* =====================================================================
-   STATS / IMPACT SECTION
-   ===================================================================== */
-.stats-section {
-  padding-block: 80px;
-  border-block: 1px solid var(--line);
-  background: var(--mist);
-}
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
-.stat-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 28px;
-  border: 1px solid var(--line-strong);
-  border-radius: 1.2rem;
-  background: var(--cream);
-  transition: transform 240ms ease, box-shadow 240ms ease;
-}
-.stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 50px rgb(16 47 39 / 10%);
-}
-.stat-icon {
-  display: grid;
-  width: 48px;
-  height: 48px;
-  place-items: center;
-  border-radius: .8rem;
-  background: var(--sky-pale);
-  margin-bottom: 20px;
-}
-.stat-icon svg { width: 24px; height: 24px; color: var(--pine-900); stroke-width: 1.6; }
-.stat-number {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 5vw, 4.5rem);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -.04em;
-  color: var(--pine-950);
-  margin-bottom: 8px;
-}
-.stat-label {
-  font-size: .9rem;
-  font-weight: 700;
-  color: var(--forest);
-  letter-spacing: .04em;
-  margin-bottom: 6px;
-}
-.stat-sub {
-  font-size: .8rem;
-  color: var(--ink-soft);
-  line-height: 1.45;
-}
-@media (max-width: 840px) {
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 480px) {
-  .stats-grid { grid-template-columns: 1fr; }
-  .stats-section { padding-block: 54px; }
 }
 
 /* =====================================================================
@@ -1847,11 +1714,6 @@ html.dark .hero-ribbon span { border-color: #2a4232; color: #d4ead0; }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
 @keyframes slide-in-left {
   from { opacity: 0; transform: translateX(-24px); }
   to   { opacity: 1; transform: translateX(0); }
@@ -1859,7 +1721,6 @@ html.dark .hero-ribbon span { border-color: #2a4232; color: #d4ead0; }
 
 /* Hero animations */
 .home-hero-copy { animation: fade-up 0.75s cubic-bezier(.16,1,.3,1) both; animation-delay: 0.1s; }
-.landscape { animation: fade-in 1s ease both; animation-delay: 0.3s; }
 .hero-ribbon { animation: fade-up 0.7s cubic-bezier(.16,1,.3,1) both; animation-delay: 0.45s; }
 
 /* Card hover lift for project family cards */
@@ -1946,13 +1807,6 @@ html.dark .hero-ribbon span { border-color: #2a4232; color: #d4ead0; }
   animation: pulse-ring 2.4s ease-in-out infinite;
 }
 
-/* Landscape markers pulse */
-.landscape-markers circle {
-  animation: pulse-ring 2.8s ease-in-out infinite;
-}
-.landscape-markers circle:nth-child(2) { animation-delay: .6s; }
-.landscape-markers circle:nth-child(3) { animation-delay: 1.2s; }
-
 /* Technology orbit spin */
 @keyframes orbit-spin {
   from { transform: rotate(0deg); }
@@ -1974,8 +1828,7 @@ html.dark .hero-ribbon span { border-color: #2a4232; color: #d4ead0; }
 
 @media (prefers-reduced-motion: reduce) {
   .home-hero-copy,
-  .landscape,
   .hero-ribbon { animation: none; }
-  .signal, .status-dot, .landscape-markers circle { animation: none; }
+  .signal, .status-dot { animation: none; }
   .technology-orbit span { animation: none; }
 }

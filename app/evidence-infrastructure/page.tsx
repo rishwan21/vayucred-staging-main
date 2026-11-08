@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { createPageMetadata } from "@/lib/site";
 
 export const metadata = createPageMetadata({
-  title: "SCADA & Digital MRV in Development — Vayucred",
+  title: "SCADA & Digital MRV in Development | Vayucred",
   description: "Vayucred is developing SCADA and digital MRV systems to support project monitoring and evidence workflows.",
   path: "/evidence-infrastructure",
 });

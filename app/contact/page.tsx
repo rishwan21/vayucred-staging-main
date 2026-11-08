@@ -4,13 +4,13 @@ import { BoundaryNote, InnerPage } from "@/components/site-shell";
 import { createPageMetadata } from "@/lib/site";
 
 export const metadata = createPageMetadata({
-  title: "Contact — Vayucred",
-  description: "Begin a project, carbon credit, investment or partnership conversation with Vayucred.",
+  title: "Contact Vayucred for Carbon Project Support",
+  description: "Contact Vayucred for asset-owner, carbon-buyer, investor and partner enquiries about project support, evidence and market pathways in India.",
   path: "/contact",
 });
 
 const conversations = [
-  ["Project owner", "Share the project type, general location, operating status and the pathway you are exploring.", "Vayucred project conversation", Sprout, "project-enquiry"],
+  ["Asset owner", "Share the project type, general location, operating status and the pathway you are exploring.", "Vayucred project conversation", Sprout, "project-enquiry"],
   ["Carbon buyer", "Describe the intended use, timing, project preferences and evidence your review process expects.", "Vayucred carbon credit enquiry", BadgeCheck, "buyer-enquiry"],
   ["Investor", "Introduce your organisation and the kind of investment conversation you would like to begin.", "Vayucred investor enquiry", Leaf, "investor-enquiry"],
   ["Partner", "Tell us where you work in the ecosystem and the type of collaboration you have in mind.", "Vayucred partnership enquiry", Handshake, "partner-enquiry"],
@@ -28,7 +28,7 @@ export default function ContactPage() {
     <InnerPage
       eyebrow="Talk to Vayucred"
       title="Bring the context. Bring the questions."
-      intro="Whether you are a project owner, carbon buyer, investor or partner, start with a short, high-level introduction so we can understand the conversation you want to begin."
+      intro="Whether you are an asset owner, carbon buyer, investor or partner, start with a short, high-level introduction so we can understand the conversation you want to begin."
       variant="contact"
     >
       <section className="contact-paths" aria-labelledby="contact-paths-title">

@@ -11,11 +11,8 @@ import {
   Leaf,
   Sprout,
   Sun,
-  TrendingUp,
-  Users,
-  Wind,
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -83,13 +80,6 @@ const principles = [
   "Independent assurance roles",
 ];
 
-const stats = [
-  { number: 3, suffix: "+", label: "Project families", sub: "Solar · Biogas / CBG · Biochar", icon: Wind },
-  { number: 100, suffix: "%", label: "Evidence-led approach", sub: "Every assessment starts with the project", icon: TrendingUp },
-  { number: 4, suffix: "", label: "Service stages", sub: "Assess → Aggregate → Monitor → Connect", icon: Gauge },
-  { number: 2, suffix: "", label: "Founders", sub: "Based in Hyderabad, India", icon: Users },
-];
-
 const faqs = [
   {
     q: "What types of projects does Vayucred work with?",
@@ -97,7 +87,7 @@ const faqs = [
   },
   {
     q: "Does Vayucred issue or certify carbon credits?",
-    a: "No. Vayucred supports projects and market conversations. Applicable validation, verification, registration, certification and issuance decisions remain with the relevant independent bodies and registries. We help project owners organise the pathway — not shortcut it.",
+    a: "No. Vayucred supports projects and market conversations. Applicable validation, verification, registration, certification and issuance decisions remain with the relevant independent bodies and registries. We help asset owners organise the pathway — not shortcut it.",
   },
   {
     q: "How does the engagement process typically start?",
@@ -113,7 +103,7 @@ const faqs = [
   },
   {
     q: "Is Vayucred accepting new projects right now?",
-    a: "Yes. We review projects on an ongoing basis. Project owners can begin a conversation by emailing hello@vayucred.com with a brief description of the project, intended pathway and available records.",
+    a: "Yes. We review projects on an ongoing basis. Asset owners can begin a conversation by emailing hello@vayucred.com with a brief description of the project, intended pathway and available records.",
   },
 ];
 
@@ -126,51 +116,6 @@ const faqSchema = {
     acceptedAnswer: { "@type": "Answer", text: a },
   })),
 };
-
-function useCountUp(target: number, duration = 1800, start = false) {
-  const [count, setCount] = useState(target);
-  useEffect(() => {
-    if (!start || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let frame: number;
-    let startTime: number | null = null;
-    const step = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
-      if (progress < 1) frame = requestAnimationFrame(step);
-    };
-    frame = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(frame);
-  }, [target, duration, start]);
-  return count;
-}
-
-function StatCard({ number, suffix, label, sub, icon: Icon }: typeof stats[0]) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  const count = useCountUp(number, 1600, visible);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
-      { threshold: 0.4 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={ref} className="stat-card">
-      <div className="stat-icon"><Icon aria-hidden="true" /></div>
-      <div className="stat-number"><span aria-hidden="true">{count}{suffix}</span><span className="sr-only">{number}{suffix}</span></div>
-      <div className="stat-label">{label}</div>
-      <div className="stat-sub">{sub}</div>
-    </div>
-  );
-}
 
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -191,64 +136,6 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-function ProjectLandscape() {
-  return (
-    <figure className="landscape" aria-labelledby="landscape-caption">
-      <svg
-        aria-hidden="true"
-        className="landscape-art"
-        viewBox="0 0 720 610"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path className="air-line air-line-one" d="M80 104C215 22 397 76 519 42c62-18 104-10 141 11" />
-        <path className="air-line air-line-two" d="M24 159c123-53 235-29 334 4 108 36 212 31 320-28" />
-        <circle className="landscape-sun" cx="578" cy="122" r="62" />
-        <path className="hill hill-back" d="M0 361c126-105 222-96 329 2 112-139 249-142 391-17v264H0Z" />
-        <path className="hill hill-front" d="M0 438c121-60 246-29 344 46 111-89 235-103 376-25v151H0Z" />
-
-        <g className="solar-field" transform="translate(65 344)">
-          <path className="field-line" d="M4 133c86-34 177-31 266 8" />
-          <g transform="translate(0 10)">
-            <path className="panel" d="m0 45 85-24 29 59-89 24Z" />
-            <path className="panel-grid" d="m28 37 26 59M57 29l27 59M10 64l91-25M18 84l91-25" />
-            <path className="panel-leg" d="m53 96-5 25m42-35 8 26" />
-          </g>
-          <g transform="translate(122 0)">
-            <path className="panel" d="m0 45 85-24 29 59-89 24Z" />
-            <path className="panel-grid" d="m28 37 26 59M57 29l27 59M10 64l91-25M18 84l91-25" />
-            <path className="panel-leg" d="m53 96-5 25m42-35 8 26" />
-          </g>
-        </g>
-
-        <g className="digester" transform="translate(380 319)">
-          <path className="digester-body" d="M14 103V59C14 24 42 0 83 0s69 24 69 59v44Z" />
-          <path className="digester-line" d="M14 62h138M83 0V-33h74" />
-          <circle className="digester-dot" cx="158" cy="-33" r="7" />
-          <path className="grass" d="M4 105c30-16 55-13 79 2 25-17 54-18 86-2" />
-        </g>
-
-        <g className="biochar" transform="translate(555 363)">
-          <path className="kiln" d="M21 98 8 29h82L77 98Z" />
-          <path className="kiln-top" d="M0 29h98M27 12h44l10 17H17Z" />
-          <path className="smoke" d="M46 10C19-18 64-28 43-58 28-79 52-92 66-105" />
-          <path className="plant" d="M104 98V39m0 24c14-18 31-22 48-13-9 16-25 22-48 13Zm0-5c-11-16-25-21-42-14 7 16 20 23 42 14Z" />
-        </g>
-
-        <g className="landscape-markers">
-          <circle cx="181" cy="349" r="7" />
-          <circle cx="463" cy="311" r="7" />
-          <circle cx="607" cy="355" r="7" />
-        </g>
-      </svg>
-      <figcaption id="landscape-caption">
-        <span><i className="legend-dot solar-dot" />Solar</span>
-        <span><i className="legend-dot biogas-dot" />Biogas / CBG</span>
-        <span><i className="legend-dot biochar-dot" />Biochar</span>
-      </figcaption>
-    </figure>
-  );
-}
-
 export default function Home() {
   return (
     <main id="main-content">
@@ -265,7 +152,7 @@ export default function Home() {
       <section className="home-hero" aria-labelledby="hero-title">
         <div className="shell home-hero-layout">
           <div className="home-hero-copy">
-            <p className="eyebrow"><span className="signal" aria-hidden="true" />Carbon project development · India</p>
+            <p className="eyebrow"><span className="signal" aria-hidden="true" />Carbon project evidence and registration support · India</p>
             <h1 id="hero-title">From <em>real projects</em> to carbon markets.</h1>
             <p className="hero-lede">
               Vayucred works with Solar, Biogas/CBG and Biochar projects—from
@@ -279,7 +166,6 @@ export default function Home() {
             </div>
             <p className="hero-boundary">Eligibility and outcomes remain subject to applicable requirements and independent processes.</p>
           </div>
-          <ProjectLandscape />
         </div>
 
         <div className="shell hero-ribbon" aria-label="Vayucred focus areas">
@@ -354,11 +240,11 @@ export default function Home() {
         </div>
         <div className="shell audience-grid">
           <article className="audience-card owner-card">
-            <div className="card-index">01 / Project owners</div>
+            <div className="card-index">01 / Asset Owners</div>
             <Gauge aria-hidden="true" />
             <h2>Understand the pathway before committing the project.</h2>
             <p>Explore eligibility, records, monitoring responsibilities and the work required for an applicable carbon pathway.</p>
-            <Link href="/asset-owners">For project owners <ArrowUpRight aria-hidden="true" /></Link>
+            <Link href="/asset-owners">For Asset Owners <ArrowUpRight aria-hidden="true" /></Link>
           </article>
           <article className="audience-card buyer-card">
             <div className="card-index">02 / Buyers</div>
@@ -367,14 +253,6 @@ export default function Home() {
             <p>Examine origin, methodology, calculation boundaries, assurance roles and limitations before procurement.</p>
             <Link href="/buyers">For carbon buyers <ArrowUpRight aria-hidden="true" /></Link>
           </article>
-        </div>
-      </section>
-
-      <section className="stats-section" aria-label="Impact overview">
-        <div className="shell stats-grid">
-          {stats.map((stat) => (
-            <StatCard key={stat.label} {...stat} />
-          ))}
         </div>
       </section>
 

@@ -48,6 +48,9 @@ requireCondition(source.includes("hello@vayucred.com"), "The approved public con
 requireCondition(source.includes("RASYLONN TECHNOLOGIES PRIVATE LIMITED"), "The certificate-confirmed legal entity is missing.");
 requireCondition(!source.includes("Raylonn Technologies Private Limited"), "The earlier incorrect legal spelling remains in website source.");
 requireCondition(source.includes("Rishwan Reddy") && source.includes("Sai Puneeth Bandi"), "The confirmed founding team is missing.");
+requireCondition(!source.includes("Project Developers") && !source.includes("Project Creators"), "An outdated asset-owner audience label remains in website source.");
+requireCondition(!source.includes("Carbon project development · India"), "Outdated homepage positioning remains in website source.");
+requireCondition(!source.includes("Founder portraits will replace the monograms"), "The internal founder-photo note remains visible.");
 requireCondition(
   source.includes("Eligibility and outcomes remain subject to applicable requirements and independent processes."),
   "The project-pathway boundary disclosure is missing.",

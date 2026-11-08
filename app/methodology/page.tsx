@@ -5,7 +5,7 @@ import { BoundaryNote, InnerPage } from "@/components/site-shell";
 import { createPageMetadata } from "@/lib/site";
 
 export const metadata = createPageMetadata({
-  title: "Methodology & Integrity — Vayucred",
+  title: "Carbon Project Methodology & Integrity | Vayucred",
   description: "Vayucred’s working principles for eligibility, calculation boundaries, evidence provenance and instrument separation.",
   path: "/methodology",
 });

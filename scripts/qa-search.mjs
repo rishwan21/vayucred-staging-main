@@ -42,6 +42,7 @@ requireCondition(site.includes('"@type": "Organization"'), "Organization schema 
 requireCondition(site.includes('"@type": "WebSite"'), "WebSite schema is missing.");
 requireCondition(site.includes("sameAs"), "Organization identity links are missing.");
 requireCondition(site.includes('url: "/social/vayucred-social.png"'), "Social image URL is not safe for repository-scoped staging metadata.");
+requireCondition(site.includes("Vayucred carbon project evidence and registration support in India"), "Social image alt text is outdated.");
 requireCondition(homepage.includes('type="application/ld+json"'), "Homepage JSON-LD output is missing.");
 requireCondition(robots.includes('disallow: "/"'), "Staging crawl block is missing.");
 requireCondition(robots.includes('allow: "/"'), "Production crawl permission is missing.");
@@ -54,6 +55,14 @@ requireCondition(styles.includes("overflow-wrap: anywhere"), "Narrow-viewport ov
 requireCondition(layout.includes("NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION") && layout.includes("NEXT_PUBLIC_BING_SITE_VERIFICATION"), "Search-engine ownership verification hooks are missing.");
 requireCondition(htaccess.includes("^www\\.vayucred\\.com$") && htaccess.includes("https://vayucred.com"), "Canonical www redirect is missing from Hostinger configuration.");
 requireCondition(htaccess.includes("Content-Security-Policy") && htaccess.includes("X-Content-Type-Options") && htaccess.includes("Referrer-Policy"), "Production security headers are incomplete.");
+requireCondition(htaccess.includes('FilesMatch "^(index|__next.*)\\.txt$"') && htaccess.includes('X-Robots-Tag "noindex, nofollow"'), "Generated Next.js text artifacts are missing noindex headers.");
+requireCondition(htaccess.includes("^brand(?:/.*)?$ - [G,L,NC]"), "Retired brand URLs are missing the 410 response.");
+for (const legacyPath of ["index\\.html", "index/?", "about\\.html", "contact\\.html", "projects\\.html", "careers\\.html", "services-corporate\\.html", "services-mrv\\.html"]) {
+  requireCondition(htaccess.includes(`^${legacyPath}$`), `Legacy redirect is missing for ${legacyPath}.`);
+}
+requireCondition(!sitemap.includes("changeFrequency") && !sitemap.includes("priority"), "Sitemap should omit change frequency and priority hints.");
+requireCondition(!layout.includes("keywords:"), "Meta keywords should not be emitted.");
+requireCondition(homepage.includes("Carbon project evidence and registration support · India"), "The approved homepage positioning is missing.");
 
 for (const [route, file] of routes) {
   requireCondition(sitemap.includes(`"${route}"`), `Sitemap source is missing ${route}.`);

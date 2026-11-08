@@ -17,8 +17,8 @@ import { Button } from "@/components/ui/button";
 import { createPageMetadata } from "@/lib/site";
 
 export const metadata = createPageMetadata({
-  title: "Solar, Biogas/CBG & Biochar Projects — Vayucred",
-  description: "Assessment, aggregation, monitoring and market support for Solar, Biogas/CBG and Biochar project owners.",
+  title: "Carbon Project Support for Asset Owners | Vayucred",
+  description: "Assessment, aggregation, monitoring and market support for Solar, Biogas/CBG and Biochar asset owners.",
   path: "/asset-owners",
 });
 
@@ -47,7 +47,7 @@ const firstConversation = [
 export default function AssetOwnersPage() {
   return (
     <InnerPage
-      eyebrow="For project owners"
+      eyebrow="For Asset Owners"
       title="Carbon projects begin on the ground."
       intro="Vayucred works with Solar, Biogas/CBG and Biochar projects through assessment, aggregation and monitoring, with buyer introductions or credit sales according to the engagement."
       variant="projects"

@@ -13,6 +13,7 @@ const visibleText = (html) => decode(html.replace(/<script\b[^>]*>[\s\S]*?<\/scr
 const sitemap = await read("sitemap.xml");
 const locations = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => decode(match[1]));
 assert.equal(locations.length, routes.length, "Sitemap must list every public route once");
+assert(!/<lastmod>|<changefreq>|<priority>/.test(sitemap), "Sitemap must not publish synthetic dates or ranking hints");
 
 for (const route of routes) {
   const html = await read(route ? `${route}/index.html` : "index.html");
@@ -28,6 +29,10 @@ for (const route of routes) {
 
 const homepage = await read("index.html");
 const text = visibleText(homepage);
+assert(text.includes("Carbon project evidence and registration support · India"), "Updated homepage positioning is missing");
+assert(!homepage.includes('name="keywords"'), "Meta keywords should not be emitted");
+assert(!homepage.includes('class="stats-section"'), "Unverified impact statistics should not appear on the homepage");
+assert(!text.includes("100%"), "Unverified percentage claims should not appear on the homepage");
 for (const heading of ["Solar", "Biogas / CBG", "Biochar", "Assess", "Aggregate", "Monitor", "Connect"]) {
   assert(text.includes(heading), `Homepage project/service content is missing from the initial HTML: ${heading}`);
 }
@@ -38,11 +43,20 @@ for (const question of faq.mainEntity) {
   assert(text.includes(question.name), `FAQ question missing from rendered HTML: ${question.name}`);
   assert(text.includes(question.acceptedAnswer.text), `FAQ answer missing from rendered HTML: ${question.name}`);
 }
-const accessibleStats = [...homepage.matchAll(/<span class="sr-only">([\s\S]*?)<\/span>/g)].map((match) => visibleText(match[1]).replace(/\s/g, ""));
-for (const number of ["3+", "100%", "4", "2"]) {
-  assert(accessibleStats.includes(number), `Missing accessible statistic: ${number}`);
-}
+const contact = await read("contact/index.html");
+const contactDescription = contact.match(/<meta name="description" content="([^"]+)"/);
+assert(contactDescription, "Contact description is missing");
+assert(
+  decode(contactDescription[1]).length >= 120 && decode(contactDescription[1]).length <= 160,
+  "Contact description must be between 120 and 160 characters",
+);
+assert(contact.includes("<title>Contact Vayucred for Carbon Project Support</title>"), "Contact title is outdated");
+const about = await read("about/index.html");
+assert(!visibleText(about).includes("Founder portraits will replace the monograms"), "Internal founder-photo note should not appear");
+const hostingerConfig = await read(".htaccess");
+assert(hostingerConfig.includes('Header always set X-Robots-Tag "noindex, nofollow"'), "Generated text artifacts must receive noindex headers");
+assert(hostingerConfig.includes("^brand(?:/.*)?$ - [G,L,NC]"), "Retired brand URLs must return 410");
 const robots = await read("robots.txt");
 assert(robots.includes(indexable ? "Allow: /" : "Disallow: /"), "Wrong crawler permission in robots.txt");
 if (indexable) assert(robots.includes(`${origin}/sitemap.xml`), "Missing production sitemap discovery");
-console.log(`Export QA passed: ${routes.length} canonical routes, indexing controls, crawlable guidance, FAQ parity and accessible statistics.`);
+console.log(`Export QA passed: ${routes.length} canonical routes, indexing controls, crawlable guidance, FAQ parity and verified claim checks.`);

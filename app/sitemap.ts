@@ -19,8 +19,5 @@ const routes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: pageUrl(route),
-    lastModified: new Date("2026-10-25"),
-    changeFrequency: route === "/" ? "weekly" : "monthly",
-    priority: route === "/" ? 1 : route === "/asset-owners" || route === "/buyers" ? 0.9 : 0.7,
   }));
 }

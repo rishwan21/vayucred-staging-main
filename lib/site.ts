@@ -5,7 +5,7 @@ export const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 export const siteName = "Vayucred";
 export const allowIndexing = process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true";
 export const defaultDescription =
-  "Vayucred supports Solar, Biogas/CBG and Biochar projects through assessment, aggregation, monitoring, and buyer introductions or credit sales.";
+  "Vayucred supports Solar, Biogas/CBG and Biochar projects with evidence and registration support, assessment, monitoring, and buyer introductions.";
 
 const socialImage = {
   // Metadata URLs are resolved against metadataBase, whose staging value already
@@ -13,7 +13,7 @@ const socialImage = {
   url: "/social/vayucred-social.png",
   width: 1200,
   height: 630,
-  alt: "Vayucred — From real projects to carbon markets",
+  alt: "Vayucred carbon project evidence and registration support in India",
 };
 
 export function pageUrl(path: string) {
