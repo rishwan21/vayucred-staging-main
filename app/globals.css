@@ -427,7 +427,7 @@ a { color: inherit; text-decoration: none; }
 .legal-copy { border-top: 1px solid var(--line); }
 .legal-copy section { display: grid; grid-template-columns: 64px 1fr; gap: 28px; padding: 34px 0; border-bottom: 1px solid var(--line); }
 .legal-copy section > span { color: var(--primary); font-family: var(--font-data); font-size: 0.7rem; }
-.legal-copy h2 { margin: 0 0 12px; font-family: var(--font-display); font-size: 2.2rem; font-weight: 600; }
+.legal-copy h2 { margin: 0 0 12px; font-family: var(--font-display); font-size: 2.2rem; font-weight: 600; line-height: 1.1; }
 .legal-copy p { margin: 0; color: var(--ink-soft); }
 
 /* Founder-corrected visual direction: warm, editorial, pine-and-cream.
@@ -880,7 +880,6 @@ body { font-size: 17px; }
 }
 
 @media (max-width: 1080px) {
-  .home-hero-layout { grid-template-columns: minmax(0, .95fr) minmax(380px, 1.05fr); }
   .home-hero h1 { font-size: clamp(3.7rem, 6.5vw, 5.7rem); }
   .technology-note-inner { grid-template-columns: 140px 1fr; }
   .technology-note a { grid-column: 2; justify-self: start; }
@@ -888,6 +887,7 @@ body { font-size: 17px; }
 }
 
 @media (max-width: 840px) {
+  .home-hero::before { display: none; }
   .home-hero-layout { padding-top: 76px; }
   .home-hero-copy { max-width: 720px; }
   .editorial-intro,
@@ -1230,7 +1230,7 @@ body { font-size: 17px; }
 .contact-path-grid a svg { width: 16px; height: 16px; }
 .contact-preparation-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(60px, 10vw, 140px); align-items: start; }
 .contact-preparation-layout h2 { margin-top: 22px; }
-.contact-preparation-layout > div > p:last-child { color: var(--ink-soft); }
+.contact-preparation-layout > div > p:last-child { margin: 24px 0 0; color: var(--ink-soft); }
 .contact-preparation-layout ol { margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; }
 .contact-preparation-layout li { display: grid; grid-template-columns: 48px 1fr; gap: 18px; min-height: 118px; padding: 22px 0; border-bottom: 1px solid var(--line); }
 .contact-preparation-layout li > span { color: var(--forest); font-size: .78rem; font-weight: 700; }
@@ -1694,10 +1694,13 @@ html.dark .hero-ribbon span { border-color: #2a4232; color: #d4ead0; }
 .faq-open .faq-answer {
   grid-template-rows: 1fr;
 }
+.faq-open .faq-answer > p { padding-bottom: 26px; }
 .faq-answer > p {
+  min-height: 0;
   overflow: hidden;
   margin: 0;
-  padding-bottom: 26px;
+  padding-bottom: 0;
+  transition: padding-bottom 300ms cubic-bezier(.4, 0, .2, 1);
   color: var(--ink-soft);
   font-size: 1.05rem;
   line-height: 1.65;
@@ -1831,4 +1834,219 @@ html.dark .hero-ribbon span { border-color: #2a4232; color: #d4ead0; }
   .hero-ribbon { animation: none; }
   .signal, .status-dot { animation: none; }
   .technology-orbit span { animation: none; }
+}
+
+/* =====================================================================
+   MOBILE RESPONSIVENESS PASS
+   ===================================================================== */
+
+/* Investor/partner CTA: keep button and secondary link on clean rows */
+.about-partners-layout > div:last-child { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
+.about-partners-layout > div:last-child > p { flex-basis: 100%; }
+.about-partner-link { display: inline-flex; min-height: 44px; align-items: center; gap: 6px; color: var(--white); font-weight: 600; white-space: nowrap; }
+
+@media (max-width: 760px) {
+  /* Footer links already have 44px tap targets; drop the extra stack gap */
+  .footer-column { gap: 0; }
+}
+
+@media (max-width: 640px) {
+  /* Inner hero: no fixed tall block on phones */
+  .inner-hero { min-height: auto; }
+  .inner-hero-content { padding-block: 56px 64px; }
+
+  /* Cards: drop desktop min-heights that leave large empty gaps on phones */
+  .project-family-card,
+  .route-focus-grid article,
+  .buyer-support-grid article,
+  .technology-capability-grid article,
+  .principle-field article,
+  .instrument-comparison-grid article,
+  .commitment-grid article,
+  .contact-path-grid article,
+  .about-service-grid article,
+  .methodology-grid article,
+  .instrument-grid article,
+  .stage-grid li,
+  .evidence-steps li,
+  .evidence-steps li:first-child,
+  .audience-card,
+  .home-audiences .audience-card { min-height: auto; }
+
+  .project-family-label { margin-top: 48px; }
+  .contact-path-grid h3 { margin-top: 48px; }
+  .route-focus-grid h3,
+  .buyer-support-grid h3,
+  .principle-field h3,
+  .instrument-comparison-grid h3,
+  .commitment-grid h3,
+  .about-service-grid h3,
+  .methodology-grid h2,
+  .instrument-grid h3 { margin-top: 48px; }
+  .technology-capability-grid article > p:first-of-type { margin-top: 56px; }
+  .audience-card h2 { margin-top: 56px; }
+
+  /* Legal pages */
+  .legal-copy h2 { font-size: 1.75rem; }
+
+  /* Investor CTA stacks full width */
+  .about-partners-layout > div:last-child { flex-direction: column; align-items: stretch; }
+  .about-partners-layout > div:last-child [data-slot="button"] { width: 100%; }
+  .about-partner-link { justify-content: center; }
+}
+
+@media (max-width: 420px) {
+  /* Keep footer link columns side by side instead of one long stack */
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+/* =====================================================================
+   HOME HERO VISUAL — three options, switch with ?hero=a|b|c
+   ===================================================================== */
+.hero-visual { position: relative; z-index: 1; min-width: 0; }
+.hv { position: relative; }
+.hv-photo { position: relative; margin: 0; overflow: hidden; background: var(--mist); box-shadow: 0 24px 60px -28px rgb(16 47 39 / 45%); }
+.hv-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 900ms cubic-bezier(.16, 1, .3, 1); }
+.hv-photo:hover img { transform: scale(1.04); }
+.hv-photo figcaption {
+  position: absolute; left: 12px; bottom: 12px;
+  padding: 6px 12px; border-radius: 999px;
+  background: rgb(247 241 228 / 92%); color: var(--pine-950);
+  font-family: var(--font-display); font-size: .95rem; line-height: 1.2;
+  backdrop-filter: blur(6px);
+}
+.hv-solar img { object-position: 50% 70%; }
+.hv-biogas img { object-position: 30% 40%; }
+.hv-biochar img { object-position: 55% 55%; }
+
+/* A — staggered cards */
+.hv-staggered { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; padding-bottom: 40px; }
+.hv-staggered .hv-photo { aspect-ratio: 3 / 5; border-radius: 1.6rem; }
+.hv-staggered .hv-photo:nth-child(1) { margin-top: 56px; }
+.hv-staggered .hv-photo:nth-child(3) { margin-top: 56px; }
+.hv-chip {
+  position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: 10px; white-space: nowrap;
+  padding: 12px 18px; border: 1px solid var(--line-strong); border-radius: 999px;
+  background: var(--cream); color: var(--pine-950); font-size: .8rem; font-weight: 600;
+  box-shadow: 0 14px 34px -18px rgb(16 47 39 / 40%);
+}
+.hv-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--moss); box-shadow: 0 0 0 4px rgb(137 170 104 / 25%); }
+
+/* B — arch triptych */
+.hv-arches { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 12px; align-items: end; }
+.hv-arches .hv-photo { border-radius: 999px 999px 1.2rem 1.2rem; }
+.hv-arches .hv-photo:nth-child(1) { aspect-ratio: 1 / 1.75; }
+.hv-arches .hv-photo:nth-child(2) { aspect-ratio: 1 / 1.7; }
+.hv-arches .hv-photo:nth-child(3) { aspect-ratio: 1 / 1.45; }
+.hv-arches figcaption { left: 50%; transform: translateX(-50%); white-space: nowrap; }
+.hv-sun { position: absolute; top: -18px; right: 6%; z-index: 2; width: 64px; height: 64px; border-radius: 50%; background: var(--sun); box-shadow: 0 0 0 10px rgb(245 199 91 / 22%); }
+
+/* C — bento with lens */
+.hv-bento { display: grid; grid-template-columns: 1.35fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; aspect-ratio: 1 / .95; }
+.hv-bento .hv-photo { border-radius: 1.6rem; }
+.hv-bento .hv-solar { grid-row: 1 / 3; }
+.hv-bento .hv-biogas { grid-column: 2; grid-row: 1; }
+.hv-bento .hv-biochar { grid-column: 2; grid-row: 2; z-index: 2; width: 118%; aspect-ratio: 1; height: auto; align-self: end; justify-self: end; margin: 0 -9% -9% 0; border: 8px solid var(--cream); border-radius: 50%; }
+.hv-bento .hv-biochar figcaption { left: 50%; bottom: 18%; transform: translateX(-50%); }
+.hv-ring { position: absolute; top: -22px; left: -22px; width: 120px; height: 120px; border: 1px dashed rgb(54 112 82 / 45%); border-radius: 50%; pointer-events: none; }
+
+/* Layout: copy + visual side by side on wide screens */
+@media (min-width: 1081px) {
+  .home-hero-layout { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(40px, 5vw, 80px); }
+  .home-hero h1 { font-size: clamp(3.6rem, 5vw, 5.8rem); }
+}
+@media (max-width: 1080px) {
+  .home-hero-layout { gap: 48px; }
+  .hero-visual { max-width: 640px; }
+}
+@media (max-width: 640px) {
+  .home-hero-layout { gap: 36px; }
+  .hv-staggered { gap: 8px; padding-bottom: 32px; }
+  .hv-staggered .hv-photo { border-radius: 1.1rem; }
+  .hv-staggered .hv-photo:nth-child(1) { margin-top: 32px; }
+  .hv-staggered .hv-photo:nth-child(3) { margin-top: 32px; }
+  .hv-chip { padding: 9px 14px; font-size: .72rem; }
+  .hv-photo figcaption { left: 8px; bottom: 8px; padding: 4px 9px; font-size: .78rem; }
+  .hv-arches { gap: 8px; }
+  .hv-arches .hv-photo figcaption { left: 50%; }
+  .hv-sun { width: 44px; height: 44px; top: -10px; }
+  .hv-bento { gap: 8px; }
+  .hv-bento .hv-photo { border-radius: 1.1rem; }
+  .hv-bento .hv-biochar { border-width: 5px; border-radius: 50%; }
+  .hv-ring { width: 80px; height: 80px; top: -14px; left: -14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hv-photo img { transition: none; }
+  .hv-photo:hover img { transform: none; }
+}
+
+/* Option A: larger cards, more breathing room above the chip */
+.hv-staggered { gap: 16px; padding-bottom: 84px; }
+.hv-staggered .hv-photo { aspect-ratio: 3 / 5.4; }
+@media (min-width: 1081px) {
+  .home-hero-layout:has(.hv-staggered) { grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: clamp(40px, 4vw, 64px); }
+}
+@media (max-width: 1080px) {
+  .hero-visual:has(.hv-staggered) { max-width: 720px; }
+}
+@media (max-width: 640px) {
+  .hv-staggered { gap: 10px; padding-bottom: 64px; }
+}
+
+/* Hero headline: Fraunces, always two lines */
+.home-hero h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: min(calc((100vw - 32px) / 7.9), 3.8rem);
+  line-height: .98;
+  letter-spacing: -.045em;
+  text-wrap: nowrap;
+}
+.home-hero h1 > span { display: block; white-space: nowrap; }
+@media (min-width: 641px) { .home-hero h1 { font-size: clamp(3.4rem, 8.6vw, 5.4rem); } }
+@media (min-width: 1081px) { .home-hero h1 { font-size: clamp(3rem, 4.5vw, 4.1rem); } }
+
+/* Hero tagline: quiet sentence-case line instead of tracked caps + dot */
+.hero-tagline {
+  display: flex; align-items: center; gap: 14px;
+  margin: 0 0 22px;
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-size: clamp(.95rem, 1.1vw, 1.05rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.hero-tagline::before { content: ""; flex: 0 0 28px; height: 1px; background: var(--forest); }
+@media (max-width: 640px) { .hero-tagline { gap: 10px; font-size: .95rem; } .hero-tagline::before { flex-basis: 20px; } }
+.hero-tagline { align-items: flex-start; line-height: 1.45; } .hero-tagline::before { margin-top: .72em; }
+
+/* Mobile hero order: tagline → headline → lede → cards → buttons → note */
+@media (max-width: 640px) {
+  .home-hero-layout { display: flex; flex-direction: column; gap: 0; }
+  .home-hero-copy { display: contents; }
+  .home-hero .hero-tagline { order: 1; }
+  .home-hero h1 { order: 2; }
+  .home-hero .hero-lede { order: 3; }
+  .home-hero .hero-visual { order: 4; margin-top: 32px; }
+  .home-hero .hero-actions { order: 5; margin-top: 28px; }
+  .home-hero .hero-boundary { order: 6; }
+}
+@media (max-width: 640px) { .home-hero-layout { align-items: stretch; } }
+
+/* Mobile hero: compact so buttons land above the fold */
+@media (max-width: 640px) {
+  .home-hero-layout { padding-block: 22px 36px; min-height: 0; }
+  .home-hero .hero-tagline { margin-bottom: 12px; font-size: .88rem; line-height: 1.4; }
+  .home-hero .hero-lede { margin-top: 14px; font-size: 1rem; line-height: 1.5; }
+  .home-hero .hero-visual { margin-top: 18px; }
+  .hv-staggered { gap: 8px; padding-bottom: 50px; }
+  .hv-staggered .hv-photo { aspect-ratio: 3 / 4.2; }
+  .hv-staggered .hv-photo:nth-child(1) { margin-top: 18px; }
+  .hv-staggered .hv-photo:nth-child(3) { margin-top: 9px; }
+  .home-hero .hero-actions { margin-top: 14px; gap: 10px; }
+  .home-hero .hero-actions a { min-height: 46px; }
+  .home-hero .hero-boundary { margin-top: 14px; }
 }

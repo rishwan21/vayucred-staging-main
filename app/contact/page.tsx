@@ -19,7 +19,7 @@ const conversations = [
 const preparation = [
   ["Context", "Who you are, your organisation and the conversation you want to begin."],
   ["Project or need", "The project, carbon credit requirement or partnership idea at a high level."],
-  ["Current position", "What is already known, available or decided—and what is not."],
+  ["Current position", "What is already known, available or decided, and what is not."],
   ["Next question", "The most useful question for an initial Vayucred conversation to address."],
 ];
 

@@ -47,7 +47,7 @@ export default function AboutPage() {
       <section className="section shell about-origin" aria-labelledby="about-origin-title">
         <p className="kicker">Why Vayucred exists</p>
         <div>
-          <h2 id="about-origin-title">Environmental value can be real—and still difficult to bring to market.</h2>
+          <h2 id="about-origin-title">Environmental value can be real and still difficult to bring to market.</h2>
           <p className="about-origin-question">If a project is creating a measurable environmental benefit, why is participation in the carbon market still so difficult?</p>
           <p>Because the activity is only the beginning. A workable pathway also needs eligibility assessment, an appropriate methodology, usable records, monitoring, applicable independent processes and a buyer conversation. Vayucred exists to help asset owners work through that gap without losing sight of the real project underneath.</p>
         </div>

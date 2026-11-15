@@ -75,7 +75,7 @@ export default function EvidenceInfrastructurePage() {
       <section className="project-first-note" aria-labelledby="project-first-title">
         <div className="shell">
           <p className="kicker">The governing idea</p>
-          <h2 id="project-first-title">Technology should make project evidence easier to follow—not make the project disappear.</h2>
+          <h2 id="project-first-title">Technology should make project evidence easier to follow, not make the project disappear.</h2>
           <p>The asset, activity, people, source records and independent processes remain visible throughout the workflow.</p>
         </div>
       </section>

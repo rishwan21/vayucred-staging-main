@@ -57,7 +57,7 @@ export default function AssetOwnersPage() {
           <div className="route-section-heading">
             <p className="kicker">Project families</p>
             <h2 id="project-focus-title">Different activities need different evidence.</h2>
-            <p>We begin with the physical project and the records it can support—not a generic credit template.</p>
+            <p>We begin with the physical project and the records it can support, not a generic credit template.</p>
           </div>
           <div className="route-focus-grid">
             {focusAreas.map(([title, text, Icon, tone], index) => (

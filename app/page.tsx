@@ -17,6 +17,7 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import { HeroVisual } from "@/components/hero-visual";
 import { organizationSchema } from "@/lib/site";
 
 const focusAreas = [
@@ -87,15 +88,15 @@ const faqs = [
   },
   {
     q: "Does Vayucred issue or certify carbon credits?",
-    a: "No. Vayucred supports projects and market conversations. Applicable validation, verification, registration, certification and issuance decisions remain with the relevant independent bodies and registries. We help asset owners organise the pathway — not shortcut it.",
+    a: "No. Vayucred supports projects and market conversations. Applicable validation, verification, registration, certification and issuance decisions remain with the relevant independent bodies and registries. We help asset owners organise the pathway, not shortcut it.",
   },
   {
     q: "How does the engagement process typically start?",
-    a: "It starts with the project — the asset, the activity, the available records and the people responsible. Send a high-level description to hello@vayucred.com. Do not attach sensitive project files in the first message. We will review and respond with questions or a next step.",
+    a: "It starts with the project: the asset, the activity, the available records and the people responsible. Send a high-level description to hello@vayucred.com. Do not attach sensitive project files in the first message. We will review and respond with questions or a next step.",
   },
   {
     q: "Can buyers source carbon credits directly through Vayucred?",
-    a: "Vayucred can support buyer introductions or credit sales according to the project and engagement. Buyers are encouraged to explore the evidence behind any opportunity — origin, methodology, calculation boundaries, assurance roles and limitations — before procurement.",
+    a: "Vayucred can support buyer introductions or credit sales according to the project and engagement. Buyers are encouraged to explore the evidence behind any opportunity before procurement, including origin, methodology, calculation boundaries, assurance roles and limitations.",
   },
   {
     q: "What is the current status of Vayucred's technology products?",
@@ -152,12 +153,12 @@ export default function Home() {
       <section className="home-hero" aria-labelledby="hero-title">
         <div className="shell home-hero-layout">
           <div className="home-hero-copy">
-            <p className="eyebrow"><span className="signal" aria-hidden="true" />Carbon project evidence and registration support · India</p>
-            <h1 id="hero-title">From <em>real projects</em> to carbon markets.</h1>
+            <p className="hero-tagline">Carbon project evidence and registration support, India</p>
+            <h1 id="hero-title"><span>From <em>real projects</em></span> <span>to carbon markets.</span></h1>
             <p className="hero-lede">
-              Vayucred works with Solar, Biogas/CBG and Biochar projects—from
+              Vayucred works with Solar, Biogas/CBG and Biochar projects, from
               early assessment and aggregation to monitoring and market
-              connections—so owners and buyers can understand the evidence
+              connections, so owners and buyers can understand the evidence
               behind the opportunity.
             </p>
             <div className="hero-actions">
@@ -166,13 +167,7 @@ export default function Home() {
             </div>
             <p className="hero-boundary">Eligibility and outcomes remain subject to applicable requirements and independent processes.</p>
           </div>
-        </div>
-
-        <div className="shell hero-ribbon" aria-label="Vayucred focus areas">
-          <span className="hero-ribbon-label">Working across</span>
-          <span>Solar</span>
-          <span>Biogas / CBG</span>
-          <span>Biochar</span>
+          <HeroVisual />
         </div>
       </section>
 
@@ -287,7 +282,7 @@ export default function Home() {
           <div className="technology-orbit" aria-hidden="true"><span /><span /><span /></div>
           <div>
             <p className="kicker"><span className="status-dot" />Technology · In development</p>
-            <h2 id="technology-title">Digital tools should support the field work—not overshadow it.</h2>
+            <h2 id="technology-title">Digital tools should support the field work, not overshadow it.</h2>
             <p>Vayucred’s SCADA and digital MRV capabilities are being developed to support monitoring and evidence workflows as the technology progresses.</p>
           </div>
           <Link href="/evidence-infrastructure">Explore the technology direction <ArrowUpRight aria-hidden="true" /></Link>
