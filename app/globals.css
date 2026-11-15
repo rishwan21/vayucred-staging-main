@@ -2050,3 +2050,14 @@ html.dark .hero-ribbon span { border-color: #2a4232; color: #d4ead0; }
   .home-hero .hero-actions a { min-height: 46px; }
   .home-hero .hero-boundary { margin-top: 14px; }
 }
+
+/* Mobile hero cards: side cards level, labels centred, solar plant centred */
+@media (max-width: 640px) {
+  .hv-staggered .hv-photo:nth-child(1),
+  .hv-staggered .hv-photo:nth-child(3) { margin-top: 18px; }
+  .hv-staggered .hv-photo figcaption { left: 50%; transform: translateX(-50%); white-space: nowrap; }
+  .hv-staggered .hv-solar img,
+  .hv-staggered .hv-solar:hover img { object-position: 50% 50%; transform-origin: 50% 100%; transform: scale(1.4); }
+}
+/* Photo labels sit on a fixed cream pill, so keep their text dark in both themes */
+.hv-photo figcaption { color: #102F27; }
