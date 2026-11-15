@@ -20,6 +20,12 @@ import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { HeroVisual } from "@/components/hero-visual";
 import { organizationSchema } from "@/lib/site";
 
+const whatsappNumber = "918886550400";
+const whatsappLink = (message: string) => `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+const projectMessage = "Hi Vayucred, I have a project and would like to discuss carbon credit support.\n\nProject type (Solar / Biogas-CBG / Biochar):\nLocation:\nCapacity / size:";
+const buyerMessage = "Hi Vayucred, I am looking to source carbon credits and would like to know more about your projects.\n\nCompany:\nCredit type / volume needed:";
+
+
 const focusAreas = [
   {
     number: "01",
@@ -162,8 +168,8 @@ export default function Home() {
               behind the opportunity.
             </p>
             <div className="hero-actions">
-              <Button asChild size="lg"><Link href="/asset-owners">I have a project <ArrowUpRight aria-hidden="true" /></Link></Button>
-              <Button asChild size="lg" variant="outline"><Link href="/buyers">I need carbon credits</Link></Button>
+              <Button asChild size="lg"><a href={whatsappLink(projectMessage)} target="_blank" rel="noopener noreferrer">I have a project <ArrowUpRight aria-hidden="true" /></a></Button>
+              <Button asChild size="lg" variant="outline"><a href={whatsappLink(buyerMessage)} target="_blank" rel="noopener noreferrer">I need carbon credits</a></Button>
             </div>
             <p className="hero-boundary">Eligibility and outcomes remain subject to applicable requirements and independent processes.</p>
           </div>
