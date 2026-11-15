@@ -62,7 +62,7 @@ for (const legacyPath of ["index\\.html", "index/?", "about\\.html", "contact\\.
 }
 requireCondition(!sitemap.includes("changeFrequency") && !sitemap.includes("priority"), "Sitemap should omit change frequency and priority hints.");
 requireCondition(!layout.includes("keywords:"), "Meta keywords should not be emitted.");
-requireCondition(homepage.includes("Carbon project evidence and registration support · India"), "The approved homepage positioning is missing.");
+requireCondition(homepage.includes("Carbon project evidence and registration support, India"), "The approved homepage positioning is missing.");
 
 for (const [route, file] of routes) {
   requireCondition(sitemap.includes(`"${route}"`), `Sitemap source is missing ${route}.`);

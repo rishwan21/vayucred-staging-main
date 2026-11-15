@@ -29,7 +29,7 @@ for (const route of routes) {
 
 const homepage = await read("index.html");
 const text = visibleText(homepage);
-assert(text.includes("Carbon project evidence and registration support · India"), "Updated homepage positioning is missing");
+assert(text.includes("Carbon project evidence and registration support, India"), "Updated homepage positioning is missing");
 assert(!homepage.includes('name="keywords"'), "Meta keywords should not be emitted");
 assert(!homepage.includes('class="stats-section"'), "Unverified impact statistics should not appear on the homepage");
 assert(!text.includes("100%"), "Unverified percentage claims should not appear on the homepage");
