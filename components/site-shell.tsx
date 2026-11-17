@@ -126,7 +126,7 @@ export function SiteFooter() {
             <SocialLinks />
             <address>
               <a href="mailto:hello@vayucred.com"><Mail aria-hidden="true" />hello@vayucred.com</a>
-              <a href="tel:+918886550400"><Phone aria-hidden="true" />8886550400</a>
+              <a href="tel:+918886550400"><Phone aria-hidden="true" />+91 88865 50400</a>
               <span><MapPin aria-hidden="true" />India</span>
             </address>
           </section>

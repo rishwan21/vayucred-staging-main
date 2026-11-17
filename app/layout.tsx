@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 
 import { createPageMetadata, defaultDescription, siteUrl } from "@/lib/site";
 import "./globals.css";
@@ -18,6 +19,7 @@ const fraunces = localFont({
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const bingSiteVerification = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
 
 export const metadata: Metadata = {
@@ -51,7 +53,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body id="top" className={`${dmSans.variable} ${fraunces.variable} antialiased`}><a className="skip-link" href="#main-content">Skip to content</a>{children}</body>
+      <body id="top" className={`${dmSans.variable} ${fraunces.variable} antialiased`}>
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        {children}
+        {gaMeasurementId ? (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} strategy="afterInteractive" />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${gaMeasurementId}');`}
+            </Script>
+          </>
+        ) : null}
+      </body>
     </html>
   );
 }

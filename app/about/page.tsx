@@ -116,7 +116,7 @@ export default function AboutPage() {
         <div className="about-team-grid">
           <article>
             <div className="team-monogram" aria-hidden="true">RR</div>
-            <div><p>Founder</p><h3>Rishwan Reddy</h3><a href="https://www.linkedin.com/in/rishwan-reddy/" rel="noreferrer" target="_blank">View LinkedIn profile <ArrowUpRight aria-hidden="true" /></a></div>
+            <div><p>Co-founder</p><h3>Rishwan Reddy</h3><a href="https://www.linkedin.com/in/rishwan-reddy/" rel="noreferrer" target="_blank">View LinkedIn profile <ArrowUpRight aria-hidden="true" /></a></div>
           </article>
           <article>
             <div className="team-monogram" aria-hidden="true">SP</div>
